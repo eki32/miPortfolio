@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body {
+  margin: 0;
+  background-color: #09090b; 
+  color: #f4f4f5;
+  font-family: sans-serif;
+}
+
+/* Esto hará que el resplandor se vea suave y difuminado */
+.project-card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 0.5s ease;
+}
+
+.group:hover .project-card-glow {
+  opacity: 0.3; /* El brillo se intensifica al pasar el ratón */
+}
+
+/* Partículas Cyan Personalizadas */
+.particle-crimson {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: crimson; /* Color Cyan 400 */
+  border-radius: 50%;
+  box-shadow: 0 0 10px crimson, 0 0 20px crimson;
+  filter: blur(1px);
+  animation: float 20s infinite linear;
+  opacity: 0.4;
+}
+
+@keyframes float {
+  from { transform: translateY(0) translateX(0); }
+  to { transform: translateY(-100vh) translateX(20px); }
+}

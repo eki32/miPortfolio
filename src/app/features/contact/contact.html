@@ -1,0 +1,63 @@
+<section id="contact" class="max-w-4xl mx-auto py-24 px-6 relative">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[crimson]/5 blur-[120px] -z-10 rounded-full"></div>
+
+  <div class="text-center mb-16">
+    <h2 class="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tighter">
+      Hablemos de tu <span class="italic text-sky-400">visión</span>.
+    </h2>
+    <p class="text-zinc-500 text-xs font-black uppercase tracking-[0.3em]">
+      ¿Tienes una propuesta o solo quieres saludar?
+    </p>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" #contactForm="ngForm" 
+        class="group space-y-8 bg-zinc-900/40 p-8 md:p-12 rounded-[2.5rem] border border-zinc-800 shadow-2xl backdrop-blur-sm transition-all duration-700 hover:bg-zinc-900/60">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="space-y-3">
+        <label class="block text-zinc-500 text-[10px] font-black uppercase tracking-widest ml-4">Nombre</label>
+        <input [(ngModel)]="contactData.name" name="name" required
+               placeholder="Ej. John Doe"
+               class="w-full bg-zinc-950/50 border border-zinc-800 focus:border-[crimson] focus:ring-1 focus:ring-[crimson]/20 outline-none p-5 rounded-2xl text-white transition-all placeholder:text-zinc-700">
+      </div>
+      <div class="space-y-3">
+        <label class="block text-zinc-500 text-[10px] font-black uppercase tracking-widest ml-4">Email</label>
+        <input [(ngModel)]="contactData.email" name="email" required email
+               placeholder="tu@email.com"
+               class="w-full bg-zinc-950/50 border border-zinc-800 focus:border-[crimson] focus:ring-1 focus:ring-[crimson]/20 outline-none p-5 rounded-2xl text-white transition-all placeholder:text-zinc-700">
+      </div>
+    </div>
+
+    <div class="space-y-3">
+      <label class="block text-zinc-500 text-[10px] font-black uppercase tracking-widest ml-4">Mensaje</label>
+      <textarea [(ngModel)]="contactData.message" name="message" required rows="5"
+                placeholder="Cuéntame sobre tu proyecto..."
+                class="w-full bg-zinc-950/50 border border-zinc-800 focus:border-[crimson] focus:ring-1 focus:ring-[crimson]/20 outline-none p-5 rounded-2xl text-white transition-all resize-none placeholder:text-zinc-700"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="isSending || !contactForm.valid"
+            class="group/btn w-full bg-white text-zinc-950 disabled:bg-zinc-800 disabled:text-zinc-500 font-black py-5 rounded-2xl transition-all duration-500 shadow-xl flex justify-center items-center gap-3 uppercase text-xs tracking-[0.2em] hover:bg-[crimson] hover:text-white active:scale-[0.98]">
+      @if (isSending) {
+        <span class="animate-spin border-2 border-current border-t-transparent rounded-full w-4 h-4"></span>
+        <span>Procesando...</span>
+      } @else {
+        <span>Enviar Mensaje</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      }
+    </button>
+  </form>
+</section>
+
+@if (showSuccessToast) {
+  <div class="fixed bottom-10 right-10 bg-zinc-900 border border-[crimson]/50 text-white px-8 py-5 rounded-2xl shadow-[0_0_40px_rgba(220,20,60,0.2)] flex items-center gap-4 animate-in fade-in slide-in-from-right-5 duration-500 z-50">
+    <div class="bg-[crimson]/20 p-2.5 rounded-full shadow-[0_0_15px_rgba(220,20,60,0.4)]">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[crimson]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <div>
+      <p class="font-black text-[10px] uppercase tracking-widest text-[crimson]">Confirmado</p>
+      <p class="text-sm text-zinc-300">Mensaje recibido correctamente.</p>
+    </div>
+  </div>
+}

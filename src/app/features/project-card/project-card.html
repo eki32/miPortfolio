@@ -1,0 +1,72 @@
+<div id="project-card" 
+  [class]="project.featured ? 'lg:col-span-2 border-sky-500/40' : 'border-zinc-800'"
+  class="group relative overflow-hidden rounded-[2.5rem] bg-zinc-900/40 p-8 md:p-10 transition-all duration-700 flex flex-col justify-between hover:bg-zinc-900/60 shadow-xl h-full border"
+>
+  <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-sky-500/5 blur-[100px] rounded-full group-hover:bg-sky-500/15 transition-all duration-1000"></div>
+  <div class="absolute -top-24 -left-24 w-80 h-80 bg-sky-500/5 blur-[100px] rounded-full group-hover:bg-sky-500/10 transition-all duration-1000"></div>
+
+  <div class="project-card-glow" [style.background]="projectService.getGradient(project.color)"></div>
+
+  <div class="flex flex-col gap-6 relative z-10" [class.flex-1]="project.featured">
+    
+    <div [class.text-center]="project.featured && !project.image">
+      @if (project.featured) {
+        <span class="inline-block mb-6 bg-sky-500/10 text-sky-400 border border-sky-500/20 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
+          Featured Project
+        </span>
+      }
+      <h3
+        [class]="project.featured ? 'text-4xl md:text-6xl mb-6 tracking-tighter' : 'text-2xl mb-4'"
+        class="font-bold text-white transition-all duration-500 group-hover:text-sky-400"
+      >
+        {{ project.title }}
+      </h3>
+      <p
+        [class]="project.featured ? 'text-lg text-zinc-300' : 'text-sm text-zinc-400'"
+        class="leading-relaxed"
+      >
+        {{ project.description }}
+      </p>
+    </div>
+
+    @if (project.image) {
+      <div 
+        class="relative flex items-center justify-center overflow-hidden rounded-2xl"
+        [class.flex-1]="project.featured"
+        [class.min-h-0]="project.featured"
+        [class.h-48]="!project.featured"
+        [class.bg-zinc-950/50]="project.featured"
+      >
+        <div class="absolute inset-0 bg-sky-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        <img 
+          [src]="project.image" 
+          [alt]="project.title"
+          [class.object-contain]="project.featured"
+          [class.object-cover]="!project.featured"
+          class="relative z-10 w-full h-full transform group-hover:scale-105 group-hover:-rotate-1 transition-all duration-700 drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]"
+        >
+      </div>
+    }
+  </div>
+
+  <div class="relative z-10" [class.mt-8]="!project.image" [class.mt-4]="project.image">
+    <div class="flex flex-wrap gap-2 mt-4" [class.justify-center]="project.featured && !project.image">
+      @for (tag of project.tags; track tag) {
+        <span class="flex items-center gap-2 px-3 py-1 bg-zinc-950/50 border border-zinc-800 rounded-full group hover:border-sky-500/50 transition-all">
+          <span class="text-[10px] font-bold text-zinc-500 group-hover:text-zinc-200 uppercase tracking-widest">
+            {{ tag }}
+          </span>
+        </span>
+      }
+    </div>
+
+    <div class="w-full bg-zinc-800/40 rounded-full mt-6 shadow-[0_0_10px_rgba(56,189,248,0.1)]" style="height: 1px; overflow: hidden;">
+      <div
+        class="h-full rounded-full transition-transform duration-[2000ms] ease-out"
+        [style.background]="projectService.getGradient(project.color)"
+        [style.transform]="isLoaded ? 'scaleX(1)' : 'scaleX(0)'"
+        style="transform-origin: left center; width: 100%; will-change: transform;"
+      ></div>
+    </div>
+  </div>
+</div>

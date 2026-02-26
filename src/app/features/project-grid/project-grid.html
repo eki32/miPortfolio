@@ -1,0 +1,10 @@
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 p-6" style="grid-auto-rows: minmax(300px, auto);">
+  @for (project of projectService.projects(); track project.id) {
+    <div 
+      [class]="project.featured ? 'md:col-span-2 md:row-span-2' : 'md:col-span-1'"
+      class="min-h-0"
+    >
+      <app-project-card [project]="project" class="h-full w-full"></app-project-card>
+    </div>
+  }
+</div>
