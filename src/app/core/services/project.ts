@@ -20,7 +20,7 @@ projects = signal<Project[]>([
     description: 'Juego cultural de exploración con geolocalización en tiempo real. Desbloquea acertijos de lugares emblemáticos mediante proximidad física y notificaciones activas.',
     tags: ['Geolocation API', 'Leaflet/Google Maps', 'Web Notifications', 'Animations'],
     color: '#38bdf8, #2563eb',
-    image: '/FotoMistery.png',
+    image: 'FotoMistery.png',
     featured: true // LA ESTRELLA
   },
   {
@@ -38,7 +38,7 @@ projects = signal<Project[]>([
     description: 'Calculadora especializada en excesos de jornada para el sector alimentación (Bizkaia y DIA). Resolución de lógica laboral compleja.',
     tags: ['Business Logic', 'Legal Specs', 'Data Persistence'],
     color: '#0ea5e9, #6366f1', //
-    image: '/FotoConveX.png',
+    image: 'FotoConveX.png',
     featured: false
   }
 ]);
