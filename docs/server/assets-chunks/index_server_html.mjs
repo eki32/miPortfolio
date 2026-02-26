@@ -3,7 +3,7 @@ export default `<!doctype html>
 <head>
   <meta charset="utf-8">
   <title>Ekaitz</title>
-  <base href="/mi-portfolio/">
+  <base href="/miPortfolio/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon-e.png">
 <link rel="stylesheet" href="styles-ZFR4KXDF.css"></head>
